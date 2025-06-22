@@ -7,7 +7,7 @@ namespace Projeto.Infrastructure.Repositories;
 /// <summary>
 /// Repositório específico para Produto.
 /// </summary>
-public class ProdutoRepository : GenericRepository<Produto>, IGenericRepository<Produto>
+public class ProdutoRepository : GenericRepository<Produto, int>, IGenericRepository<Produto, int>
 {
     public ProdutoRepository(ProjetoDbContext context) : base(context) { }
 

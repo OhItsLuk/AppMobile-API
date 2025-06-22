@@ -28,7 +28,7 @@ builder.Services.AddDbContext<ProjetoDbContext>(options =>
 
 // UnitOfWork e Repositórios
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
 
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(UsuarioProfile));
@@ -38,9 +38,12 @@ builder.Services.AddScoped<IValidator<UsuarioCreateDto>, UsuarioCreateValidator>
 builder.Services.AddScoped<IValidator<UsuarioUpdateDto>, UsuarioUpdateValidator>();
 builder.Services.AddScoped<IValidator<UsuarioLoginDto>, UsuarioLoginValidator>();
 builder.Services.AddScoped<IValidator<UsuarioRecuperarSenhaDto>, UsuarioRecuperarSenhaValidator>();
+builder.Services.AddScoped<IValidator<ProdutoCreateDto>, ProdutoCreateValidator>();
+builder.Services.AddScoped<IValidator<ProdutoUpdateDto>, ProdutoUpdateValidator>();
 
 // Serviços de aplicação
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
 // JWT
 var jwtSection = builder.Configuration.GetSection("Jwt");

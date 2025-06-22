@@ -8,8 +8,8 @@ namespace Projeto.Domain;
 /// </summary>
 public interface IUnitOfWork : IDisposable
 {
-    IGenericRepository<Usuario> Usuarios { get; }
-    IGenericRepository<Produto> Produtos { get; }
+    IGenericRepository<Usuario, Guid> Usuarios { get; }
+    IGenericRepository<Produto, int> Produtos { get; }
     Task<int> CommitAsync();
     Task<int> SaveAsync();
 } 

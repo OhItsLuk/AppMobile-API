@@ -10,16 +10,16 @@ namespace Projeto.Infrastructure;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ProjetoDbContext _context;
-    private IGenericRepository<Usuario>? _usuarios;
-    private IGenericRepository<Produto>? _produtos;
+    private IGenericRepository<Usuario, Guid>? _usuarios;
+    private IGenericRepository<Produto, int>? _produtos;
 
     public UnitOfWork(ProjetoDbContext context)
     {
         _context = context;
     }
 
-    public IGenericRepository<Usuario> Usuarios => _usuarios ??= new UsuarioRepository(_context);
-    public IGenericRepository<Produto> Produtos => _produtos ??= new ProdutoRepository(_context);
+    public IGenericRepository<Usuario, Guid> Usuarios => _usuarios ??= new UsuarioRepository(_context);
+    public IGenericRepository<Produto, int> Produtos => _produtos ??= new ProdutoRepository(_context);
 
     public async Task<int> CommitAsync()
     {

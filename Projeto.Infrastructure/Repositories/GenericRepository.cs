@@ -11,7 +11,7 @@ namespace Projeto.Infrastructure.Repositories;
 /// <summary>
 /// Implementação do repositório genérico.
 /// </summary>
-public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
 {
     protected readonly ProjetoDbContext _context;
     protected readonly DbSet<TEntity> _dbSet;
@@ -22,7 +22,7 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity?> GetByIdAsync(Guid id)
+    public async Task<TEntity?> GetByIdAsync(TKey id)
     {
         return await _dbSet.FindAsync(id);
     }
@@ -30,6 +30,11 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
     public async Task<IEnumerable<TEntity>> GetAllAsync(int page = 1, int pageSize = 20)
     {
         return await _dbSet.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+    }
+
+    public async Task<IEnumerable<TEntity>> GetPagedAsync(int page = 1, int pageSize = 20)
+    {
+        return await GetAllAsync(page, pageSize);
     }
 
     public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
