@@ -10,12 +10,15 @@ namespace Projeto.Infrastructure;
 public class ProjetoDbContext : DbContext
 {
     public DbSet<Usuario> Usuarios { get; set; } = null!;
+    public DbSet<Produto> Produtos { get; set; } = null!;
 
     public ProjetoDbContext(DbContextOptions<ProjetoDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+        modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
+        
         // Seed de usuário inicial
         modelBuilder.Entity<Usuario>().HasData(new Usuario
         {
@@ -27,6 +30,7 @@ public class ProjetoDbContext : DbContext
             Ativo = true,
             Excluido = false
         });
+        
         base.OnModelCreating(modelBuilder);
     }
 } 

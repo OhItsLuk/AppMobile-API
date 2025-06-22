@@ -11,6 +11,7 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly ProjetoDbContext _context;
     private IGenericRepository<Usuario>? _usuarios;
+    private IGenericRepository<Produto>? _produtos;
 
     public UnitOfWork(ProjetoDbContext context)
     {
@@ -18,8 +19,14 @@ public class UnitOfWork : IUnitOfWork
     }
 
     public IGenericRepository<Usuario> Usuarios => _usuarios ??= new UsuarioRepository(_context);
+    public IGenericRepository<Produto> Produtos => _produtos ??= new ProdutoRepository(_context);
 
     public async Task<int> CommitAsync()
+    {
+        return await _context.SaveChangesAsync();
+    }
+
+    public async Task<int> SaveAsync()
     {
         return await _context.SaveChangesAsync();
     }

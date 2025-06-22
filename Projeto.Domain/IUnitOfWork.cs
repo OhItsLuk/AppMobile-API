@@ -9,5 +9,7 @@ namespace Projeto.Domain;
 public interface IUnitOfWork : IDisposable
 {
     IGenericRepository<Usuario> Usuarios { get; }
+    IGenericRepository<Produto> Produtos { get; }
     Task<int> CommitAsync();
+    Task<int> SaveAsync();
 } 
