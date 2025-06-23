@@ -15,7 +15,7 @@ Integração com API externa em .NET 8.0
 🔗 Links Importantes
 
 📲 Repositório do App Mobile:
-https://github.com/OhItsLuk/AppMobile-Extensao-Estacio
+[AppMobile-Extensao-Estacio](https://github.com/OhItsLuk/AppMobile-Extensao-Estacio)
 
 📝 Roteiro de Extensão:
 [Clique para acessar](https://liveestacio-my.sharepoint.com/:w:/g/personal/202303956932_alunos_estacio_br/EfjGNx3v5pJJrV7F9dYBuAEBw5zyNMkZqtBN5HPv0qAT_w?e=LkPnfz)
