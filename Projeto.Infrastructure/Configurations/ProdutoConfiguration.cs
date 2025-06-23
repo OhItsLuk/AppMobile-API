@@ -24,10 +24,11 @@ public class ProdutoConfiguration : IEntityTypeConfiguration<Produto>
         builder.Property(p => p.Estoque)
             .IsRequired();
 
-        builder.Property(p => p.DataCriacao)
-            .IsRequired();
+        builder.Property(p => p.Preco)
+            .IsRequired()
+            .HasColumnType("decimal(18,2)");
 
-        builder.Property(p => p.Ativo)
+        builder.Property(p => p.DataCriacao)
             .IsRequired();
 
         builder.Property(p => p.Excluido)

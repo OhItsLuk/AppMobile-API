@@ -20,5 +20,8 @@ public class ProdutoCreateValidator : AbstractValidator<ProdutoCreateDto>
 
         RuleFor(x => x.Estoque)
             .GreaterThanOrEqualTo(0).WithMessage("Estoque deve ser maior ou igual a zero.");
+
+        RuleFor(x => x.Preco)
+            .GreaterThan(0).WithMessage("Preço deve ser maior que zero.");
     }
 } 

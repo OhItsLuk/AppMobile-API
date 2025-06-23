@@ -45,6 +45,17 @@ builder.Services.AddScoped<IValidator<ProdutoUpdateDto>, ProdutoUpdateValidator>
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
+// CORS - Configuração para desenvolvimento Android
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AndroidDevelopment", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 // JWT
 var jwtSection = builder.Configuration.GetSection("Jwt");
 var key = Encoding.ASCII.GetBytes(jwtSection["Key"]!);
@@ -99,14 +110,25 @@ var app = builder.Build();
 // Middleware de erros
 app.UseMiddleware<Projeto.Api.Middlewares.ErrorHandlerMiddleware>();
 
+// CORS - Deve vir antes de outras configurações
+app.UseCors("AndroidDevelopment");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
+    // Em desenvolvimento, NÃO redirecionar HTTP para HTTPS
+    // Comentando a linha de redirecionamento HTTPS
+    // app.UseHttpsRedirection();
+}
+else
+{
+    // Em produção, manter o redirecionamento HTTPS
+    app.UseHttpsRedirection();
 }
 
 app.UseSerilogRequestLogging();
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.DTOs;
 using Projeto.Application.Interfaces;
-
 namespace Projeto.Api.Controllers;
 
 [ApiController]
