@@ -35,7 +35,6 @@ public class UsuarioService : IUsuarioService
         _recuperarSenhaValidator = recuperarSenhaValidator;
     }
 
-    // Métodos a serem implementados...
     public Task<UsuarioDto> RegistrarAsync(UsuarioCreateDto dto) => throw new NotImplementedException();
     public Task<string> LoginAsync(UsuarioLoginDto dto) => throw new NotImplementedException();
     public Task LogoutAsync(Guid usuarioId) => throw new NotImplementedException();

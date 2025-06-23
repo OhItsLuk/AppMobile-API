@@ -10,6 +10,4 @@ namespace Projeto.Infrastructure.Repositories;
 public class UsuarioRepository : GenericRepository<Usuario, Guid>, IGenericRepository<Usuario, Guid>
 {
     public UsuarioRepository(ProjetoDbContext context) : base(context) { }
-
-    // Métodos específicos para usuário podem ser adicionados aqui
 } 
