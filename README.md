@@ -14,6 +14,9 @@ Integração com API externa em .NET 8.0
 
 🔗 Links Importantes
 
+📷 Vídeo do Aplicativo (Em sua versão inicial, apenas CRUD de produtos) rodando:
+[Vídeo](https://youtu.be/GFuTi5qD7gs)
+
 📲 Repositório do App Mobile:
 [AppMobile-Extensao-Estacio](https://github.com/OhItsLuk/AppMobile-Extensao-Estacio)
 
